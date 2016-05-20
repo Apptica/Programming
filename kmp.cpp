@@ -1,23 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
 /***********************Copy from here to use KMP on a string*************/
-int f[1000];
+int f[1000]={0};
 void preprocess(string s)
 	{
-		int i,len,j=0;
-		f[0] = 0;
+		int i=1,len,j=0;//j is the counter that is used to fill the f values
+		f[0] = 0;//f[0] has to be zero always as no proper prefix and suffix exists
 		len = s.length();
-		for(i=1;i<len;++i)
+		while(i<len)
 			{	
-				if(s[i]==s[j])
+				if(s[i]==s[j])//in case the characters are succesfully matching in a sequence
 					{
 						f[i] = j + 1;
 						++j;
+						++i;
 					}
 				else
 					{
-						f[i] = 0;
-						j=0;
+						if(j==0)//if the suffix is dismatched to the first character of prefix
+							{
+								f[i] = 0;
+								j=0;
+								++i;
+							}
+						else//look if there may be chance that any sub suffix would be matching to some previous j
+							{
+								j = f[j-1];
+							}
 					}
 			}
 	}
