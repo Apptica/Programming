@@ -4,26 +4,27 @@ using namespace std;
 int f[1000];
 void preprocess(string s)
 	{
-		int i,len;
+		int i,len,j=0;
 		f[0] = 0;
-		f[1] = 0;
 		len = s.length();
-		for(i=2;i<len;++i)
+		for(i=1;i<len;++i)
 			{	
-				if(s[i]==s[f[i-1]])
+				if(s[i]==s[j])
 					{
-						f[i] = f[i-1] + 1;
+						f[i] = j + 1;
+						++j;
 					}
 				else
 					{
 						f[i] = 0;
+						j=0;
 					}
 			}
 	}
 
 int match(string haystack,string needle)
 	{
-		int len,len2,i,j;
+		int len,len2,i=0,j=0;
 		len = haystack.length();
 		len2 = needle.length();
 		while(i<len)
@@ -33,7 +34,7 @@ int match(string haystack,string needle)
 						++i;
 						++j;
 					}
-				if(j==len2)
+				if(j==len2-1)
 					{
 						return 1;
 					}
