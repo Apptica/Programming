@@ -2,7 +2,7 @@
 using namespace std;
 /***********************************/
 int dp[1001]={0};
-int idx[1001]={0};
+int idx[1001]={0};//to store the maximum helping index
 int lis(string s)
 	{
 		int ans=0,temp;
