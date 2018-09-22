@@ -23,7 +23,7 @@ void dijkstra()
 						int w = node2.second;
 						if(dist[v] > dist[u] + w)
 							{
-                parent[v] = u;
+								parent[v] = u;
 								s.erase(s.find(make_pair(dist[v] , v)));
 								s.insert(make_pair(dist[u] + w , v));
 								dist[v] = dist[u] + w;
