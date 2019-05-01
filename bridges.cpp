@@ -12,7 +12,7 @@ LL gcd(LL a,LL b){if(b==0) return a; else return gcd(b,a%b);}
 LL gen(LL start,LL end){LL diff = end-start;LL temp = rand()%start;return temp+diff;}
 using namespace std;
 /****************************************/
-//This algorithm finds all the articulation points in a graph and adds them to a set
+//This algorithm finds all the bridges in a graph and adds them to a set
 const int maxn = 100001;
 vector<int> graph[maxn];
 bool br_visit[maxn + 1];
